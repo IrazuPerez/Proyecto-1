@@ -1,0 +1,1675 @@
+import processing.sound.*;
+SoundFile file;
+PFont waltograph42;
+PFont Nintendo;
+PFont SuperMarioBros;
+PFont BitterBold;
+peque mario;
+peque luigui;
+peque darth;
+peque mickye;
+peque minie;
+peque pelea1;
+peque pelea2;
+int x = 100;
+int y = 100;
+int m = 100;
+int i = 100;
+float l = 5;
+int jugador1;
+int jugador2;
+int turno = 0;
+int vida1 = 100;
+int vida2 = 100;
+int titulo = 0;
+int instruc;
+int selec;
+int batalla;
+int ganador;
+
+void setup(){
+  size(600,400);
+  background(50,60,123);
+  waltograph42 = createFont("waltograph42.ttf",50);
+  Nintendo = createFont("Nintendo.ttf",50);
+  BitterBold = createFont("BitterBold.ttf", 30);
+  SuperMarioBros = createFont("SuperMarioBros.ttf",30);
+  file = new SoundFile(this,"Nintendosong.mp3");
+  file.play();
+  file.amp(5);
+    
+  mario = new peque("Mario Bros",100,5,0);
+  luigui = new peque("Luigui Bros",100,7,1);
+  darth = new peque("Darth Vader",100,5,2);
+  mickye = new peque("Mickye Mouse",100,3,3);
+  minie = new peque("Minie Mouse",100,8,4);
+
+}
+
+void draw(){
+  
+  switch(titulo){
+  case 0:
+  instruc();
+  break;
+  
+  case 1:
+  selec();
+  break;
+  
+  case 2:
+  selec1();
+  break;
+  
+  case 3:
+  batalla();
+  break;
+  
+  case 4:
+ ganador1();
+  break;
+  
+  case 5:
+  ganador2();
+  break;
+  
+
+  }
+
+}
+
+class peque{
+  String nombre;
+  int salud;
+  int golpe;
+  int cara;
+  
+  peque(String nombre_, int salud_,  int golpe_, int cara_){
+  nombre = nombre_;
+  salud = salud_;
+  golpe = golpe_;
+  cara = cara_;
+  
+  }
+  
+  void crear(){
+    switch(cara){
+      
+case 0:
+pushMatrix();//Mario
+//translate(-10,80);
+l=8;
+   fill(0);
+  stroke(0);
+  rect(x+l*7,y,l*4,l);
+  rect(x+l*5,y+l,l*2,l);
+  rect(x+l*11,y+l,l*2,l);
+  rect(x+l*4,y+l*2,l,l);
+  rect(x+l*13,y+l*2,l,l);
+  rect(x+l*3,y+l*3,l,l);
+  rect(x+l*14,y+l*3,l,l);
+  rect(x+l*2,y+l*4,l,l*4);
+  rect(x+l*15,y+l*4,l,l*4);
+  rect(x+l*3,y+l*7,l,l*5);
+  rect(x+l*14,y+l*7,l,l*5);
+  rect(x+l,y+l*8,l,l*2);
+  rect(x+l*16,y+l*8,l,l*2);
+  rect(x+l*2,y+l*10,l,l);
+  rect(x+l*15,y+l*10,l,l);
+  rect(x+l*4,y+l*12,l,l);
+  rect(x+l*13,y+l*12,l,l);
+  rect(x+l*5,y+l*13,l,l);
+  rect(x+l*12,y+l*13,l,l);
+  rect(x+l*6,y+l*14,l*6,l);
+  rect(x+l*6,y+l*4,l*6,l);
+  rect(x+l*5,y+l*5,l*8,l);
+  rect(x+l*4,y+l*6,l*10,l);
+  rect(x+l*7,y+l*8,l,l*2);
+  rect(x+l*10,y+l*8,l,l*2);
+  rect(x+l*6,y+l*11,l,l);
+  rect(x+l*11,y+l*11,l,l);
+  rect(x+l*7,y+l*12,l*4,l);
+  
+  fill(255);
+  stroke(0);
+  rect(x+l*7,y+l*3,l*4,l);
+  rect(x+l*8,y+l*2,l*2,l);
+  rect(x+l*6,y+l*7,l,l*3);
+  rect(x+l*7,y+l*7,l,l);
+  rect(x+l*11,y+l*7,l,l*3);
+  rect(x+l*10,y+l*7,l,l);
+  
+  fill(255,0,0);
+  stroke(255,0,0);
+  rect(x+l*7,y+l,l*4,l);
+  rect(x+l*5,y+l*2,l*3,l);
+  rect(x+l*10,y+l*2,l*3,l);
+  rect(x+l*4,y+l*3,l*3,l);
+  rect(x+l*11,y+l*3,l*3,l);
+  rect(x+l*3,y+l*4,l*3,l);
+  rect(x+l*12,y+l*4,l*3,l);
+  rect(x+l*3,y+l*5,l*2,l);
+  rect(x+l*13,y+l*5,l*2,l);
+  rect(x+l*3,y+l*6,l,l);
+  rect(x+l*14,y+l*6,l,l);
+  
+  fill(255,204,153);
+  stroke(255,204,153);
+  rect(x+l*4,y+l*7,l*2,l);
+  rect(x+l*12,y+l*7,l*2,l);
+  rect(x+l*8,y+l*7,l*2,l);
+  rect(x+l*4,y+l*8,l*2,l*3);
+  rect(x+l*12,y+l*8,l*2,l*3);
+  rect(x+l*8,y+l*8,l*2,l*4);
+  rect(x+l*6,y+l*10,l*6,l);
+  rect(x+l*7,y+l*11,l*4,l);
+  rect(x+l*4,y+l*11,l*2,l);
+  rect(x+l*12,y+l*11,l*2,l);
+  rect(x+l*5,y+l*12,l*2,l);
+  rect(x+l*11,y+l*12,l*2,l);
+  rect(x+l*6,y+l*13,l*6,l);
+  rect(x+l*2,y+l*8,l,l*2);
+  rect(x+l*15,y+l*8,l,l*2);
+  popMatrix();
+break;
+
+case 1:
+  pushMatrix();//Luigui
+ // translate(165,-7);
+ l=8;
+     fill(0);
+  stroke(0);
+  rect(x+l*7,y,l*4,l);
+  rect(x+l*5,y+l,l*2,l);
+  rect(x+l*11,y+l,l*2,l);
+  rect(x+l*4,y+l*2,l,l);
+  rect(x+l*13,y+l*2,l,l);
+  rect(x+l*3,y+l*3,l,l);
+  rect(x+l*14,y+l*3,l,l);
+  rect(x+l*2,y+l*4,l,l*4);
+  rect(x+l*15,y+l*4,l,l*4);
+  rect(x+l*3,y+l*7,l,l*5);
+  rect(x+l*14,y+l*7,l,l*5);
+  rect(x+l,y+l*8,l,l*2);
+  rect(x+l*16,y+l*8,l,l*2);
+  rect(x+l*2,y+l*10,l,l);
+  rect(x+l*15,y+l*10,l,l);
+  rect(x+l*4,y+l*12,l,l);
+  rect(x+l*13,y+l*12,l,l);
+  rect(x+l*5,y+l*13,l,l);
+  rect(x+l*12,y+l*13,l,l);
+  rect(x+l*6,y+l*14,l*6,l);
+  rect(x+l*6,y+l*4,l*6,l);
+  rect(x+l*5,y+l*5,l*8,l);
+  rect(x+l*4,y+l*6,l*10,l);
+  rect(x+l*7,y+l*8,l,l*2);
+  rect(x+l*10,y+l*8,l,l*2);
+  rect(x+l*6,y+l*11,l,l);
+  rect(x+l*11,y+l*11,l,l);
+  rect(x+l*7,y+l*12,l*4,l);
+  
+  fill(255);
+  stroke(0);
+  rect(x+l*7,y+l*3,l*4,l);
+  rect(x+l*8,y+l*2,l*2,l);
+  rect(x+l*6,y+l*7,l,l*3);
+  rect(x+l*7,y+l*7,l,l);
+  rect(x+l*11,y+l*7,l,l*3);
+  rect(x+l*10,y+l*7,l,l);
+  
+  fill(87,166,57);
+  stroke(87,166,57);
+  rect(x+l*7,y+l,l*4,l);
+  rect(x+l*5,y+l*2,l*3,l);
+  rect(x+l*10,y+l*2,l*3,l);
+  rect(x+l*4,y+l*3,l*3,l);
+  rect(x+l*11,y+l*3,l*3,l);
+  rect(x+l*3,y+l*4,l*3,l);
+  rect(x+l*12,y+l*4,l*3,l);
+  rect(x+l*3,y+l*5,l*2,l);
+  rect(x+l*13,y+l*5,l*2,l);
+  rect(x+l*3,y+l*6,l,l);
+  rect(x+l*14,y+l*6,l,l);
+  
+  fill(255,204,153);
+  stroke(255,204,153);
+  rect(x+l*4,y+l*7,l*2,l);
+  rect(x+l*12,y+l*7,l*2,l);
+  rect(x+l*8,y+l*7,l*2,l);
+  rect(x+l*4,y+l*8,l*2,l*3);
+  rect(x+l*12,y+l*8,l*2,l*3);
+  rect(x+l*8,y+l*8,l*2,l*4);
+  rect(x+l*6,y+l*10,l*6,l);
+  rect(x+l*7,y+l*11,l*4,l);
+  rect(x+l*4,y+l*11,l*2,l);
+  rect(x+l*12,y+l*11,l*2,l);
+  rect(x+l*5,y+l*12,l*2,l);
+  rect(x+l*11,y+l*12,l*2,l);
+  rect(x+l*6,y+l*13,l*6,l);
+  rect(x+l*2,y+l*8,l,l*2);
+  rect(x+l*15,y+l*8,l,l*2);
+  popMatrix();
+  break;
+  
+  case 2:
+  pushMatrix();//Darth
+  //float l;
+  l= 5;
+  //translate(330,-13);
+  fill(0);
+stroke(0);
+rect(x+l*10,y,l*2,l);
+rect(x+l*13,y,l,l);
+rect(x+l*15,y,l*2,l);
+rect(x+l*8,y+l,l*4,l);
+rect(x+l*13,y+l,l,l);
+rect(x+l*15,y+l,l*4,l);
+rect(x+l*6,y+l*2,l*6,l);
+rect(x+l*13,y+l*2,l,l);
+rect(x+l*15,y+l*2,l*6,l);
+rect(x+l*6,y+l*3,l*6,l);
+rect(x+l*13,y+l*3,l,l);
+rect(x+l*15,y+l*3,l*6,l);
+rect(x+l*5,y+l*4,l*7,l);
+rect(x+l*13,y+l*4,l,l);
+rect(x+l*15,y+l*4,l*7,l);
+rect(x+l*5,y+l*5,l*7,l);
+rect(x+l*13,y+l*5,l,l);
+rect(x+l*15,y+l*5,l*7,l);
+rect(x+l*5,y+l*6,l*7,l);
+rect(x+l*13,y+l*6,l,l);
+rect(x+l*15,y+l*6,l*7,l);
+rect(x+l*4,y+l*7,l*8,l);
+rect(x+l*13,y+l*7,l,l);
+rect(x+l*15,y+l*7,l*8,l);
+rect(x+l*4,y+l*8,l*4,l);
+rect(x+l*13,y+l*8,l,l);
+rect(x+l*19,y+l*8,l*4,l);
+rect(x+l*4,y+l*9,l*3,l);
+rect(x+l*8,y+l*9,l*4,l);
+rect(x+l*13,y+l*9,l,l);
+rect(x+l*15,y+l*9,l*4,l);
+rect(x+l*20,y+l*9,l*3,l);
+rect(x+l*3,y+l*10,l*3,l);
+rect(x+l*8,y+l*10,l*5,l);
+rect(x+l*14,y+l*10,l*5,l);
+rect(x+l*21,y+l*10,l*3,l);
+rect(x+l*7,y+l*10,l*2,l);
+rect(x+l*14,y+l*10,l*6,l);
+rect(x+l*21,y+l*10,l*2,l);
+rect(x+l*7,y+l*11,l*7,l);
+rect(x+l*14,y+l*11,l*6,l);
+rect(x+l*21,y+l*11,l*3,l);
+rect(x+l*3,y+l*11,l*3,l);
+rect(x+l*3,y+l*12,l*2,l);
+rect(x+l*7,y+l*12,l*5,l);
+rect(x+l*13,y+l*12,l,l);
+rect(x+l*15,y+l*12,l*5,l);
+rect(x+l*22,y+l*12,l*2,l);
+rect(x+l*2,y+l*13,l*3,l);
+rect(x+l*6,y+l*13,l,l);
+rect(x+l*12,y+l*13,l*3,l);
+rect(x+l*22,y+l*13,l*3,l);
+rect(x+l*20,y+l*13,l,l);
+rect(x+l*2,y+l*14,l*2,l);
+rect(x+l*5,y+l*14,l*8,l);
+rect(x+l*14,y+l*14,l*8,l);
+rect(x+l*23,y+l*14,l*2,l);
+rect(x+l*2,y+l*15,l*2,l);
+rect(x+l*5,y+l*15,l*5,l);
+rect(x+l*11,y+l*15,l*5,l);
+rect(x+l*17,y+l*15,l*5,l);
+rect(x+l*23,y+l*15,l*2,l);
+rect(x+l*2,y+l*16,l,l);
+rect(x+l*4,y+l*16,l,l);
+rect(x+l*6,y+l*16,l*3,l);
+rect(x+l*10,y+l*16,l*2,l);
+rect(x+l*13,y+l*16,l,l);
+rect(x+l*15,y+l*16,l*2,l);
+rect(x+l*18,y+l*16,l*3,l);
+rect(x+l*22,y+l*16,l,l);
+rect(x+l*24,y+l*16,l,l);
+rect(x+l,y+l*17,l*2,l);
+rect(x+l*4,y+l*17,l*2,l);
+rect(x+l*7,y+l*17,l,l);
+rect(x+l*9,y+l*17,l*3,l);
+rect(x+l*13,y+l*17,l,l);
+rect(x+l*15,y+l*17,l*3,l);
+rect(x+l*19,y+l*17,l,l);
+rect(x+l*21,y+l*17,l*2,l);
+rect(x+l*24,y+l*17,l*2,l);
+rect(x+l,y+l*18,l,l);
+rect(x+l*4,y+l*18,l*3,l);
+rect(x+l*8,y+l*18,l*2,l);
+rect(x+l*11,y+l*18,l,l);
+rect(x+l*13,y+l*18,l,l);
+rect(x+l*15,y+l*18,l,l);
+rect(x+l*17,y+l*18,l*2,l);
+rect(x+l*20,y+l*18,l*3,l);
+rect(x+l*25,y+l*18,l,l);
+rect(x+l,y+l*19,l,l);
+rect(x+l*4,y+l*19,l*4,l);
+rect(x+l*9,y+l*19,l,l);
+rect(x+l*11,y+l*19,l,l);
+rect(x+l*13,y+l*19,l,l);
+rect(x+l*15,y+l*19,l,l);
+rect(x+l*17,y+l*19,l,l);
+rect(x+l*19,y+l*19,l*4,l);
+rect(x+l*25,y+l*19,l,l);
+rect(x,y+l*20,l,l);
+rect(x+l*3,y+l*20,l*4,l);
+rect(x+l*8,y+l*20,l,l);
+rect(x+l*11,y+l*20,l,l);
+rect(x+l*13,y+l*20,l,l);
+rect(x+l*15,y+l*20,l,l);
+rect(x+l*18,y+l*20,l,l);
+rect(x+l*20,y+l*20,l*4,l);
+rect(x+l*26,y+l*20,l,l);
+rect(x,y+l*21,l,l);
+rect(x+l*3,y+l*21,l*7,l);
+rect(x+l*17,y+l*21,l*7,l);
+rect(x+l*26,y+l*21,l,l);
+rect(x+l*9,y+l*22,l*9,l);
+
+fill(190,190,190);
+stroke(190,190,190);
+rect(x+l*12,y,l,l);
+rect(x+l*14,y,l,l);
+rect(x+l*12,y+l,l,l);
+rect(x+l*14,y+l,l,l);
+rect(x+l*12,y+l*2,l,l);
+rect(x+l*14,y+l*2,l,l);
+rect(x+l*12,y+l*3,l,l);
+rect(x+l*14,y+l*3,l,l);
+rect(x+l*12,y+l*4,l,l);
+rect(x+l*14,y+l*4,l,l);
+rect(x+l*12,y+l*5,l,l);
+rect(x+l*14,y+l*5,l,l);
+rect(x+l*12,y+l*6,l,l);
+rect(x+l*14,y+l*6,l,l);
+rect(x+l*12,y+l*7,l,l);
+rect(x+l*14,y+l*7,l,l);
+rect(x+l*8,y+l*8,l*5,l);
+rect(x+l*14,y+l*8,l*5,l);
+rect(x+l*7,y+l*9,l,l);
+rect(x+l*19,y+l*9,l,l);
+rect(x+l*6,y+l*10,l,l);
+rect(x+l*20,y+l*10,l,l);
+rect(x+l*6,y+l*11,l,l);
+rect(x+l*20,y+l*11,l,l);
+rect(x+l*5,y+l*12,l*2,l);
+rect(x+l*20,y+l*12,l*2,l);
+rect(x+l*5,y+l*13,l,l);
+rect(x+l*21,y+l*13,l,l);
+rect(x+l*7,y+l*13,l*5,l);
+rect(x+l*15,y+l*13,l*5,l);
+rect(x+l*12,y+l*9,l,l);
+rect(x+l*14,y+l*9,l,l);
+rect(x+l*13,y+l*10,l,l);
+rect(x+l*12,y+l*12,l,l);
+rect(x+l*14,y+l*12,l,l);
+rect(x+l*4,y+l*14,l,l*2);
+rect(x+l*22,y+l*14,l,l*2);
+rect(x+l*3,y+l*15,l,l*5);
+rect(x+l*23,y+l*15,l,l*5);
+rect(x+l*2,y+l*17,l,l*5);
+rect(x+l*24,y+l*17,l,l*5);
+rect(x+l,y+l*20,l,l*2);
+rect(x+l*25,y+l*20,l,l*2);
+rect(x+l*10,y+l*21,l*7,l);
+rect(x+l*12,y+l*16,l,l*5);
+rect(x+l*14,y+l*16,l,l*5);
+rect(x+l*10,y+l*18,l,l*3);
+rect(x+l*16,y+l*18,l,l*3);
+rect(x+l*5,y+l*16,l,l);
+rect(x+l*6,y+l*17,l,l);
+rect(x+l*9,y+l*16,l,l);
+rect(x+l*8,y+l*17,l,l);
+rect(x+l*21,y+l*16,l,l);
+rect(x+l*20,y+l*17,l,l);
+rect(x+l*17,y+l*16,l,l);
+rect(x+l*18,y+l*17,l,l);
+rect(x+l*10,y+l*15,l,l);
+rect(x+l*16,y+l*15,l,l);
+rect(x+l*7,y+l*18,l,l);
+rect(x+l*19,y+l*18,l,l);
+rect(x+l*8,y+l*19,l,l);
+rect(x+l*18,y+l*19,l,l);
+rect(x+l*9,y+l*20,l,l);
+rect(x+l*17,y+l*20,l,l);
+popMatrix();
+break;
+  
+  case 3:
+  pushMatrix();//Mickye
+//translate(90,150);
+l = 8;
+fill(0);
+  stroke(0);
+rect(x+l,y,l*3,l);
+rect(x+l*10,y,l*3,l);
+rect(x,y+l,l*5,l);
+rect(x+l*9,y+l,l*5,l);
+rect(x,y+l*2,l*5,l);
+rect(x+l*9,y+l*2,l*5,l);
+rect(x,y+l*3,l*14,l);
+rect(x+l,y+l*4,l*12,l);
+rect(x+l,y+l*5,l*12,l);
+rect(x+l*2,y+l*6,l*10,l);
+rect(x+l,y+l*7,l*12,l);
+
+fill(255,0,0);
+stroke(255,0,0);
+rect(x+l,y+l*8,l*12,l);
+rect(x+l,y+l*9,l*12,l);
+rect(x+l,y+l*10,l*3,l);
+rect(x+l*6,y+l*10,l*2,l);
+rect(x+l*10,y+l*10,l*3,l);
+rect(x+l*2,y+l*11,l*2,l);
+rect(x+l*6,y+l*11,l*2,l);
+rect(x+l*10,y+l*11,l*2,l);
+rect(x+l*3,y+l*12,l,l);
+rect(x+l*6,y+l*12,l*2,l);
+rect(x+l*10,y+l*12,l,l);
+rect(x+l*4,y+l*13,l*6,l);
+
+fill(255,255,0);
+stroke(255,255,0);
+rect(x+l*4,y+l*10,l*2,l);
+rect(x+l*8,y+l*10,l*2,l);
+rect(x+l*4,y+l*11,l*2,l);
+rect(x+l*8,y+l*11,l*2,l);
+rect(x+l*4,y+l*12,l*2,l);
+rect(x+l*8,y+l*12,l*2,l);
+popMatrix();
+break;
+
+case 4:
+pushMatrix();//Minie
+l=6.5;
+//translate(270,150);
+fill(0);
+stroke(0);
+rect(x+l*2,y,l*4,l);
+rect(x+l*15,y,l*4,l);
+rect(x+l,y+l,l*6,l);
+rect(x+l*14,y+l,l*6,l);
+rect(x,y+l*2,l*8,l);
+rect(x+l*13,y+l*2,l*8,l);
+rect(x,y+l*3,l*8,l);
+rect(x+l*13,y+l*3,l*8,l);
+rect(x,y+l*4,l*8,l);
+rect(x+l*13,y+l*4,l*8,l);
+rect(x,y+l*5,l*8,l);
+rect(x+l*10,y+l*5,l,l);
+rect(x+l*13,y+l*5,l*8,l);
+rect(x+l,y+l*6,l*7,l);
+rect(x+l*9,y+l*6,l*3,l);
+rect(x+l*13,y+l*6,l*7,l);
+rect(x+l*2,y+l*7,l*17,l);
+rect(x+l*4,y+l*8,l*13,l);
+rect(x+l*3,y+l*9,l*15,l);
+rect(x+l*3,y+l*10,l*15,l);
+
+fill(255,0,0);
+stroke(255,0,0);
+rect(x+l*3,y+l*11,l*15,l);
+rect(x+l*4,y+l*13,l*13,l);
+rect(x+l*3,y+l*12,l,l);
+rect(x+l*5,y+l*12,l*2,l);
+rect(x+l*8,y+l*12,l*2,l);
+rect(x+l*11,y+l*12,l*2,l);
+rect(x+l*14,y+l*12,l*2,l);
+rect(x+l*17,y+l*12,l,l);
+rect(x+l*4,y+l*14,l*2,l);
+rect(x+l*7,y+l*14,l*2,l);
+rect(x+l*10,y+l*14,l*2,l);
+rect(x+l*13,y+l*14,l*2,l);
+rect(x+l*16,y+l*14,l,l);
+rect(x+l*5,y+l*15,l*11,l);
+rect(x+l*6,y+l*16,l*2,l);
+rect(x+l*9,y+l*16,l*2,l);
+rect(x+l*12,y+l*16,l*2,l);
+rect(x+l*15,y+l*16,l,l);
+rect(x+l*7,y+l*17,l*8,l);
+rect(x+l*8,y+l*3,l,l);
+rect(x+l*12,y+l*3,l,l);
+rect(x+l*8,y+l*4,l*2,l);
+rect(x+l*11,y+l*4,l*2,l);
+rect(x+l*8,y+l*5,l*2,l);
+rect(x+l*11,y+l*5,l*2,l);
+rect(x+l*8,y+l*6,l,l);
+rect(x+l*12,y+l*6,l,l);
+popMatrix();
+break;
+
+
+    }
+  }
+
+
+}
+
+void instruc(){
+  background(0);
+  textFont(waltograph42);
+  textSize(80);
+  fill(255);
+  text("Disney", 80,150 );
+   textFont(Nintendo);
+  textSize(50);
+  fill(255,0,0);
+  text("Nintendo", 300,300 );
+  textFont(SuperMarioBros);
+  fill(255,255,0);
+  textSize(50);
+  text("VS",270,230);
+  textFont(BitterBold);
+  textSize(20);
+  text("Da click en la pantalla",170,350);
+  
+  if(mousePressed){
+titulo=1;
+  }
+}
+
+void selec(){
+  background(42,100,120);
+  
+    pushMatrix();//Mario
+  translate(-10,2);
+  l=4.5;
+   fill(0);
+  stroke(0);
+  rect(x+l*7,y,l*4,l);
+  rect(x+l*5,y+l,l*2,l);
+  rect(x+l*11,y+l,l*2,l);
+  rect(x+l*4,y+l*2,l,l);
+  rect(x+l*13,y+l*2,l,l);
+  rect(x+l*3,y+l*3,l,l);
+  rect(x+l*14,y+l*3,l,l);
+  rect(x+l*2,y+l*4,l,l*4);
+  rect(x+l*15,y+l*4,l,l*4);
+  rect(x+l*3,y+l*7,l,l*5);
+  rect(x+l*14,y+l*7,l,l*5);
+  rect(x+l,y+l*8,l,l*2);
+  rect(x+l*16,y+l*8,l,l*2);
+  rect(x+l*2,y+l*10,l,l);
+  rect(x+l*15,y+l*10,l,l);
+  rect(x+l*4,y+l*12,l,l);
+  rect(x+l*13,y+l*12,l,l);
+  rect(x+l*5,y+l*13,l,l);
+  rect(x+l*12,y+l*13,l,l);
+  rect(x+l*6,y+l*14,l*6,l);
+  rect(x+l*6,y+l*4,l*6,l);
+  rect(x+l*5,y+l*5,l*8,l);
+  rect(x+l*4,y+l*6,l*10,l);
+  rect(x+l*7,y+l*8,l,l*2);
+  rect(x+l*10,y+l*8,l,l*2);
+  rect(x+l*6,y+l*11,l,l);
+  rect(x+l*11,y+l*11,l,l);
+  rect(x+l*7,y+l*12,l*4,l);
+  
+  fill(255);
+  stroke(0);
+  rect(x+l*7,y+l*3,l*4,l);
+  rect(x+l*8,y+l*2,l*2,l);
+  rect(x+l*6,y+l*7,l,l*3);
+  rect(x+l*7,y+l*7,l,l);
+  rect(x+l*11,y+l*7,l,l*3);
+  rect(x+l*10,y+l*7,l,l);
+  
+  fill(255,0,0);
+  stroke(255,0,0);
+  rect(x+l*7,y+l,l*4,l);
+  rect(x+l*5,y+l*2,l*3,l);
+  rect(x+l*10,y+l*2,l*3,l);
+  rect(x+l*4,y+l*3,l*3,l);
+  rect(x+l*11,y+l*3,l*3,l);
+  rect(x+l*3,y+l*4,l*3,l);
+  rect(x+l*12,y+l*4,l*3,l);
+  rect(x+l*3,y+l*5,l*2,l);
+  rect(x+l*13,y+l*5,l*2,l);
+  rect(x+l*3,y+l*6,l,l);
+  rect(x+l*14,y+l*6,l,l);
+  
+  fill(255,204,153);
+  stroke(255,204,153);
+  rect(x+l*4,y+l*7,l*2,l);
+  rect(x+l*12,y+l*7,l*2,l);
+  rect(x+l*8,y+l*7,l*2,l);
+  rect(x+l*4,y+l*8,l*2,l*3);
+  rect(x+l*12,y+l*8,l*2,l*3);
+  rect(x+l*8,y+l*8,l*2,l*4);
+  rect(x+l*6,y+l*10,l*6,l);
+  rect(x+l*7,y+l*11,l*4,l);
+  rect(x+l*4,y+l*11,l*2,l);
+  rect(x+l*12,y+l*11,l*2,l);
+  rect(x+l*5,y+l*12,l*2,l);
+  rect(x+l*11,y+l*12,l*2,l);
+  rect(x+l*6,y+l*13,l*6,l);
+  rect(x+l*2,y+l*8,l,l*2);
+  rect(x+l*15,y+l*8,l,l*2);
+  popMatrix();
+  
+  pushMatrix();//Luigui
+  l=4.5;
+  translate(170,2);
+     fill(0);
+  stroke(0);
+  rect(x+l*7,y,l*4,l);
+  rect(x+l*5,y+l,l*2,l);
+  rect(x+l*11,y+l,l*2,l);
+  rect(x+l*4,y+l*2,l,l);
+  rect(x+l*13,y+l*2,l,l);
+  rect(x+l*3,y+l*3,l,l);
+  rect(x+l*14,y+l*3,l,l);
+  rect(x+l*2,y+l*4,l,l*4);
+  rect(x+l*15,y+l*4,l,l*4);
+  rect(x+l*3,y+l*7,l,l*5);
+  rect(x+l*14,y+l*7,l,l*5);
+  rect(x+l,y+l*8,l,l*2);
+  rect(x+l*16,y+l*8,l,l*2);
+  rect(x+l*2,y+l*10,l,l);
+  rect(x+l*15,y+l*10,l,l);
+  rect(x+l*4,y+l*12,l,l);
+  rect(x+l*13,y+l*12,l,l);
+  rect(x+l*5,y+l*13,l,l);
+  rect(x+l*12,y+l*13,l,l);
+  rect(x+l*6,y+l*14,l*6,l);
+  rect(x+l*6,y+l*4,l*6,l);
+  rect(x+l*5,y+l*5,l*8,l);
+  rect(x+l*4,y+l*6,l*10,l);
+  rect(x+l*7,y+l*8,l,l*2);
+  rect(x+l*10,y+l*8,l,l*2);
+  rect(x+l*6,y+l*11,l,l);
+  rect(x+l*11,y+l*11,l,l);
+  rect(x+l*7,y+l*12,l*4,l);
+  
+  fill(255);
+  stroke(0);
+  rect(x+l*7,y+l*3,l*4,l);
+  rect(x+l*8,y+l*2,l*2,l);
+  rect(x+l*6,y+l*7,l,l*3);
+  rect(x+l*7,y+l*7,l,l);
+  rect(x+l*11,y+l*7,l,l*3);
+  rect(x+l*10,y+l*7,l,l);
+  
+  fill(87,166,57);
+  stroke(87,166,57);
+  rect(x+l*7,y+l,l*4,l);
+  rect(x+l*5,y+l*2,l*3,l);
+  rect(x+l*10,y+l*2,l*3,l);
+  rect(x+l*4,y+l*3,l*3,l);
+  rect(x+l*11,y+l*3,l*3,l);
+  rect(x+l*3,y+l*4,l*3,l);
+  rect(x+l*12,y+l*4,l*3,l);
+  rect(x+l*3,y+l*5,l*2,l);
+  rect(x+l*13,y+l*5,l*2,l);
+  rect(x+l*3,y+l*6,l,l);
+  rect(x+l*14,y+l*6,l,l);
+  
+  fill(255,204,153);
+  stroke(255,204,153);
+  rect(x+l*4,y+l*7,l*2,l);
+  rect(x+l*12,y+l*7,l*2,l);
+  rect(x+l*8,y+l*7,l*2,l);
+  rect(x+l*4,y+l*8,l*2,l*3);
+  rect(x+l*12,y+l*8,l*2,l*3);
+  rect(x+l*8,y+l*8,l*2,l*4);
+  rect(x+l*6,y+l*10,l*6,l);
+  rect(x+l*7,y+l*11,l*4,l);
+  rect(x+l*4,y+l*11,l*2,l);
+  rect(x+l*12,y+l*11,l*2,l);
+  rect(x+l*5,y+l*12,l*2,l);
+  rect(x+l*11,y+l*12,l*2,l);
+  rect(x+l*6,y+l*13,l*6,l);
+  rect(x+l*2,y+l*8,l,l*2);
+  rect(x+l*15,y+l*8,l,l*2);
+  popMatrix();
+  
+  pushMatrix();//Darth
+  //float l;
+  l= 3.5;
+  translate(330,-13);
+  fill(0);
+stroke(0);
+rect(x+l*10,y,l*2,l);
+rect(x+l*13,y,l,l);
+rect(x+l*15,y,l*2,l);
+rect(x+l*8,y+l,l*4,l);
+rect(x+l*13,y+l,l,l);
+rect(x+l*15,y+l,l*4,l);
+rect(x+l*6,y+l*2,l*6,l);
+rect(x+l*13,y+l*2,l,l);
+rect(x+l*15,y+l*2,l*6,l);
+rect(x+l*6,y+l*3,l*6,l);
+rect(x+l*13,y+l*3,l,l);
+rect(x+l*15,y+l*3,l*6,l);
+rect(x+l*5,y+l*4,l*7,l);
+rect(x+l*13,y+l*4,l,l);
+rect(x+l*15,y+l*4,l*7,l);
+rect(x+l*5,y+l*5,l*7,l);
+rect(x+l*13,y+l*5,l,l);
+rect(x+l*15,y+l*5,l*7,l);
+rect(x+l*5,y+l*6,l*7,l);
+rect(x+l*13,y+l*6,l,l);
+rect(x+l*15,y+l*6,l*7,l);
+rect(x+l*4,y+l*7,l*8,l);
+rect(x+l*13,y+l*7,l,l);
+rect(x+l*15,y+l*7,l*8,l);
+rect(x+l*4,y+l*8,l*4,l);
+rect(x+l*13,y+l*8,l,l);
+rect(x+l*19,y+l*8,l*4,l);
+rect(x+l*4,y+l*9,l*3,l);
+rect(x+l*8,y+l*9,l*4,l);
+rect(x+l*13,y+l*9,l,l);
+rect(x+l*15,y+l*9,l*4,l);
+rect(x+l*20,y+l*9,l*3,l);
+rect(x+l*3,y+l*10,l*3,l);
+rect(x+l*8,y+l*10,l*5,l);
+rect(x+l*14,y+l*10,l*5,l);
+rect(x+l*21,y+l*10,l*3,l);
+rect(x+l*7,y+l*10,l*2,l);
+rect(x+l*14,y+l*10,l*6,l);
+rect(x+l*21,y+l*10,l*2,l);
+rect(x+l*7,y+l*11,l*7,l);
+rect(x+l*14,y+l*11,l*6,l);
+rect(x+l*21,y+l*11,l*3,l);
+rect(x+l*3,y+l*11,l*3,l);
+rect(x+l*3,y+l*12,l*2,l);
+rect(x+l*7,y+l*12,l*5,l);
+rect(x+l*13,y+l*12,l,l);
+rect(x+l*15,y+l*12,l*5,l);
+rect(x+l*22,y+l*12,l*2,l);
+rect(x+l*2,y+l*13,l*3,l);
+rect(x+l*6,y+l*13,l,l);
+rect(x+l*12,y+l*13,l*3,l);
+rect(x+l*22,y+l*13,l*3,l);
+rect(x+l*20,y+l*13,l,l);
+rect(x+l*2,y+l*14,l*2,l);
+rect(x+l*5,y+l*14,l*8,l);
+rect(x+l*14,y+l*14,l*8,l);
+rect(x+l*23,y+l*14,l*2,l);
+rect(x+l*2,y+l*15,l*2,l);
+rect(x+l*5,y+l*15,l*5,l);
+rect(x+l*11,y+l*15,l*5,l);
+rect(x+l*17,y+l*15,l*5,l);
+rect(x+l*23,y+l*15,l*2,l);
+rect(x+l*2,y+l*16,l,l);
+rect(x+l*4,y+l*16,l,l);
+rect(x+l*6,y+l*16,l*3,l);
+rect(x+l*10,y+l*16,l*2,l);
+rect(x+l*13,y+l*16,l,l);
+rect(x+l*15,y+l*16,l*2,l);
+rect(x+l*18,y+l*16,l*3,l);
+rect(x+l*22,y+l*16,l,l);
+rect(x+l*24,y+l*16,l,l);
+rect(x+l,y+l*17,l*2,l);
+rect(x+l*4,y+l*17,l*2,l);
+rect(x+l*7,y+l*17,l,l);
+rect(x+l*9,y+l*17,l*3,l);
+rect(x+l*13,y+l*17,l,l);
+rect(x+l*15,y+l*17,l*3,l);
+rect(x+l*19,y+l*17,l,l);
+rect(x+l*21,y+l*17,l*2,l);
+rect(x+l*24,y+l*17,l*2,l);
+rect(x+l,y+l*18,l,l);
+rect(x+l*4,y+l*18,l*3,l);
+rect(x+l*8,y+l*18,l*2,l);
+rect(x+l*11,y+l*18,l,l);
+rect(x+l*13,y+l*18,l,l);
+rect(x+l*15,y+l*18,l,l);
+rect(x+l*17,y+l*18,l*2,l);
+rect(x+l*20,y+l*18,l*3,l);
+rect(x+l*25,y+l*18,l,l);
+rect(x+l,y+l*19,l,l);
+rect(x+l*4,y+l*19,l*4,l);
+rect(x+l*9,y+l*19,l,l);
+rect(x+l*11,y+l*19,l,l);
+rect(x+l*13,y+l*19,l,l);
+rect(x+l*15,y+l*19,l,l);
+rect(x+l*17,y+l*19,l,l);
+rect(x+l*19,y+l*19,l*4,l);
+rect(x+l*25,y+l*19,l,l);
+rect(x,y+l*20,l,l);
+rect(x+l*3,y+l*20,l*4,l);
+rect(x+l*8,y+l*20,l,l);
+rect(x+l*11,y+l*20,l,l);
+rect(x+l*13,y+l*20,l,l);
+rect(x+l*15,y+l*20,l,l);
+rect(x+l*18,y+l*20,l,l);
+rect(x+l*20,y+l*20,l*4,l);
+rect(x+l*26,y+l*20,l,l);
+rect(x,y+l*21,l,l);
+rect(x+l*3,y+l*21,l*7,l);
+rect(x+l*17,y+l*21,l*7,l);
+rect(x+l*26,y+l*21,l,l);
+rect(x+l*9,y+l*22,l*9,l);
+
+fill(190,190,190);
+stroke(190,190,190);
+rect(x+l*12,y,l,l);
+rect(x+l*14,y,l,l);
+rect(x+l*12,y+l,l,l);
+rect(x+l*14,y+l,l,l);
+rect(x+l*12,y+l*2,l,l);
+rect(x+l*14,y+l*2,l,l);
+rect(x+l*12,y+l*3,l,l);
+rect(x+l*14,y+l*3,l,l);
+rect(x+l*12,y+l*4,l,l);
+rect(x+l*14,y+l*4,l,l);
+rect(x+l*12,y+l*5,l,l);
+rect(x+l*14,y+l*5,l,l);
+rect(x+l*12,y+l*6,l,l);
+rect(x+l*14,y+l*6,l,l);
+rect(x+l*12,y+l*7,l,l);
+rect(x+l*14,y+l*7,l,l);
+rect(x+l*8,y+l*8,l*5,l);
+rect(x+l*14,y+l*8,l*5,l);
+rect(x+l*7,y+l*9,l,l);
+rect(x+l*19,y+l*9,l,l);
+rect(x+l*6,y+l*10,l,l);
+rect(x+l*20,y+l*10,l,l);
+rect(x+l*6,y+l*11,l,l);
+rect(x+l*20,y+l*11,l,l);
+rect(x+l*5,y+l*12,l*2,l);
+rect(x+l*20,y+l*12,l*2,l);
+rect(x+l*5,y+l*13,l,l);
+rect(x+l*21,y+l*13,l,l);
+rect(x+l*7,y+l*13,l*5,l);
+rect(x+l*15,y+l*13,l*5,l);
+rect(x+l*12,y+l*9,l,l);
+rect(x+l*14,y+l*9,l,l);
+rect(x+l*13,y+l*10,l,l);
+rect(x+l*12,y+l*12,l,l);
+rect(x+l*14,y+l*12,l,l);
+rect(x+l*4,y+l*14,l,l*2);
+rect(x+l*22,y+l*14,l,l*2);
+rect(x+l*3,y+l*15,l,l*5);
+rect(x+l*23,y+l*15,l,l*5);
+rect(x+l*2,y+l*17,l,l*5);
+rect(x+l*24,y+l*17,l,l*5);
+rect(x+l,y+l*20,l,l*2);
+rect(x+l*25,y+l*20,l,l*2);
+rect(x+l*10,y+l*21,l*7,l);
+rect(x+l*12,y+l*16,l,l*5);
+rect(x+l*14,y+l*16,l,l*5);
+rect(x+l*10,y+l*18,l,l*3);
+rect(x+l*16,y+l*18,l,l*3);
+rect(x+l*5,y+l*16,l,l);
+rect(x+l*6,y+l*17,l,l);
+rect(x+l*9,y+l*16,l,l);
+rect(x+l*8,y+l*17,l,l);
+rect(x+l*21,y+l*16,l,l);
+rect(x+l*20,y+l*17,l,l);
+rect(x+l*17,y+l*16,l,l);
+rect(x+l*18,y+l*17,l,l);
+rect(x+l*10,y+l*15,l,l);
+rect(x+l*16,y+l*15,l,l);
+rect(x+l*7,y+l*18,l,l);
+rect(x+l*19,y+l*18,l,l);
+rect(x+l*8,y+l*19,l,l);
+rect(x+l*18,y+l*19,l,l);
+rect(x+l*9,y+l*20,l,l);
+rect(x+l*17,y+l*20,l,l);
+popMatrix();
+
+pushMatrix();//Mickye
+translate(90,150);
+l = 5;
+fill(0);
+  stroke(0);
+rect(x+l,y,l*3,l);
+rect(x+l*10,y,l*3,l);
+rect(x,y+l,l*5,l);
+rect(x+l*9,y+l,l*5,l);
+rect(x,y+l*2,l*5,l);
+rect(x+l*9,y+l*2,l*5,l);
+rect(x,y+l*3,l*14,l);
+rect(x+l,y+l*4,l*12,l);
+rect(x+l,y+l*5,l*12,l);
+rect(x+l*2,y+l*6,l*10,l);
+rect(x+l,y+l*7,l*12,l);
+
+fill(255,0,0);
+stroke(255,0,0);
+rect(x+l,y+l*8,l*12,l);
+rect(x+l,y+l*9,l*12,l);
+rect(x+l,y+l*10,l*3,l);
+rect(x+l*6,y+l*10,l*2,l);
+rect(x+l*10,y+l*10,l*3,l);
+rect(x+l*2,y+l*11,l*2,l);
+rect(x+l*6,y+l*11,l*2,l);
+rect(x+l*10,y+l*11,l*2,l);
+rect(x+l*3,y+l*12,l,l);
+rect(x+l*6,y+l*12,l*2,l);
+rect(x+l*10,y+l*12,l,l);
+rect(x+l*4,y+l*13,l*6,l);
+
+fill(255,255,0);
+stroke(255,255,0);
+rect(x+l*4,y+l*10,l*2,l);
+rect(x+l*8,y+l*10,l*2,l);
+rect(x+l*4,y+l*11,l*2,l);
+rect(x+l*8,y+l*11,l*2,l);
+rect(x+l*4,y+l*12,l*2,l);
+rect(x+l*8,y+l*12,l*2,l);
+popMatrix();
+
+pushMatrix();//Minie
+l=4;
+translate(270,150);
+fill(0);
+stroke(0);
+rect(x+l*2,y,l*4,l);
+rect(x+l*15,y,l*4,l);
+rect(x+l,y+l,l*6,l);
+rect(x+l*14,y+l,l*6,l);
+rect(x,y+l*2,l*8,l);
+rect(x+l*13,y+l*2,l*8,l);
+rect(x,y+l*3,l*8,l);
+rect(x+l*13,y+l*3,l*8,l);
+rect(x,y+l*4,l*8,l);
+rect(x+l*13,y+l*4,l*8,l);
+rect(x,y+l*5,l*8,l);
+rect(x+l*10,y+l*5,l,l);
+rect(x+l*13,y+l*5,l*8,l);
+rect(x+l,y+l*6,l*7,l);
+rect(x+l*9,y+l*6,l*3,l);
+rect(x+l*13,y+l*6,l*7,l);
+rect(x+l*2,y+l*7,l*17,l);
+rect(x+l*4,y+l*8,l*13,l);
+rect(x+l*3,y+l*9,l*15,l);
+rect(x+l*3,y+l*10,l*15,l);
+
+fill(255,0,0);
+stroke(255,0,0);
+rect(x+l*3,y+l*11,l*15,l);
+rect(x+l*4,y+l*13,l*13,l);
+rect(x+l*3,y+l*12,l,l);
+rect(x+l*5,y+l*12,l*2,l);
+rect(x+l*8,y+l*12,l*2,l);
+rect(x+l*11,y+l*12,l*2,l);
+rect(x+l*14,y+l*12,l*2,l);
+rect(x+l*17,y+l*12,l,l);
+rect(x+l*4,y+l*14,l*2,l);
+rect(x+l*7,y+l*14,l*2,l);
+rect(x+l*10,y+l*14,l*2,l);
+rect(x+l*13,y+l*14,l*2,l);
+rect(x+l*16,y+l*14,l,l);
+rect(x+l*5,y+l*15,l*11,l);
+rect(x+l*6,y+l*16,l*2,l);
+rect(x+l*9,y+l*16,l*2,l);
+rect(x+l*12,y+l*16,l*2,l);
+rect(x+l*15,y+l*16,l,l);
+rect(x+l*7,y+l*17,l*8,l);
+rect(x+l*8,y+l*3,l,l);
+rect(x+l*12,y+l*3,l,l);
+rect(x+l*8,y+l*4,l*2,l);
+rect(x+l*11,y+l*4,l*2,l);
+rect(x+l*8,y+l*5,l*2,l);
+rect(x+l*11,y+l*5,l*2,l);
+rect(x+l*8,y+l*6,l,l);
+rect(x+l*12,y+l*6,l,l);
+popMatrix();
+  
+  fill(0);
+  textFont(BitterBold);
+  textSize(15);
+  text("Seleciona Jugador 1", 250,40);
+  text("Ataca con la tecla  s",250,60);
+  text("Mario Bros", 100,180);
+  text("Toca a", 110,195);
+  text("Luigui Bros", 280,180);
+  text("Toca s", 290,195);
+  text("Darth Vader", 450,180);
+  text("Toca d", 460,195);
+  text("Mickey Mouse", 190,330);
+  text("Toca f", 210,350);
+  text("Minie Mouse", 380,330);
+  text("Toca g", 400,350);
+  
+  if(keyPressed){
+  if(key == 'a'){
+  pelea1 = mario;
+  jugador1 = 0;
+  titulo=2;  
+  }
+  else if(key == 's'){
+ pelea1 = luigui;
+ jugador1 = 0;
+  titulo=2;  
+  }
+  else if(key == 'd'){
+ pelea1 = darth;
+ jugador1 = 0;
+  titulo=2;  
+  }
+  else if(key == 'f'){
+  pelea1 = mickye;
+  jugador1=0;
+  titulo=2;  
+  }
+  else if(key == 'g'){
+ pelea1 = minie;
+ jugador1 = 0;
+  titulo=2;  
+  }
+  }
+ 
+}
+
+void selec1(){
+  background(143,143,143);
+  
+  pushMatrix(); //Mario
+  l=5;
+  translate(-15,-10);
+   fill(0);
+  stroke(0);
+  rect(x+l*7,y,l*4,l);
+  rect(x+l*5,y+l,l*2,l);
+  rect(x+l*11,y+l,l*2,l);
+  rect(x+l*4,y+l*2,l,l);
+  rect(x+l*13,y+l*2,l,l);
+  rect(x+l*3,y+l*3,l,l);
+  rect(x+l*14,y+l*3,l,l);
+  rect(x+l*2,y+l*4,l,l*4);
+  rect(x+l*15,y+l*4,l,l*4);
+  rect(x+l*3,y+l*7,l,l*5);
+  rect(x+l*14,y+l*7,l,l*5);
+  rect(x+l,y+l*8,l,l*2);
+  rect(x+l*16,y+l*8,l,l*2);
+  rect(x+l*2,y+l*10,l,l);
+  rect(x+l*15,y+l*10,l,l);
+  rect(x+l*4,y+l*12,l,l);
+  rect(x+l*13,y+l*12,l,l);
+  rect(x+l*5,y+l*13,l,l);
+  rect(x+l*12,y+l*13,l,l);
+  rect(x+l*6,y+l*14,l*6,l);
+  rect(x+l*6,y+l*4,l*6,l);
+  rect(x+l*5,y+l*5,l*8,l);
+  rect(x+l*4,y+l*6,l*10,l);
+  rect(x+l*7,y+l*8,l,l*2);
+  rect(x+l*10,y+l*8,l,l*2);
+  rect(x+l*6,y+l*11,l,l);
+  rect(x+l*11,y+l*11,l,l);
+  rect(x+l*7,y+l*12,l*4,l);
+  
+  fill(255);
+  stroke(0);
+  rect(x+l*7,y+l*3,l*4,l);
+  rect(x+l*8,y+l*2,l*2,l);
+  rect(x+l*6,y+l*7,l,l*3);
+  rect(x+l*7,y+l*7,l,l);
+  rect(x+l*11,y+l*7,l,l*3);
+  rect(x+l*10,y+l*7,l,l);
+  
+  fill(255,0,0);
+  stroke(255,0,0);
+  rect(x+l*7,y+l,l*4,l);
+  rect(x+l*5,y+l*2,l*3,l);
+  rect(x+l*10,y+l*2,l*3,l);
+  rect(x+l*4,y+l*3,l*3,l);
+  rect(x+l*11,y+l*3,l*3,l);
+  rect(x+l*3,y+l*4,l*3,l);
+  rect(x+l*12,y+l*4,l*3,l);
+  rect(x+l*3,y+l*5,l*2,l);
+  rect(x+l*13,y+l*5,l*2,l);
+  rect(x+l*3,y+l*6,l,l);
+  rect(x+l*14,y+l*6,l,l);
+  
+  fill(255,204,153);
+  stroke(255,204,153);
+  rect(x+l*4,y+l*7,l*2,l);
+  rect(x+l*12,y+l*7,l*2,l);
+  rect(x+l*8,y+l*7,l*2,l);
+  rect(x+l*4,y+l*8,l*2,l*3);
+  rect(x+l*12,y+l*8,l*2,l*3);
+  rect(x+l*8,y+l*8,l*2,l*4);
+  rect(x+l*6,y+l*10,l*6,l);
+  rect(x+l*7,y+l*11,l*4,l);
+  rect(x+l*4,y+l*11,l*2,l);
+  rect(x+l*12,y+l*11,l*2,l);
+  rect(x+l*5,y+l*12,l*2,l);
+  rect(x+l*11,y+l*12,l*2,l);
+  rect(x+l*6,y+l*13,l*6,l);
+  rect(x+l*2,y+l*8,l,l*2);
+  rect(x+l*15,y+l*8,l,l*2);
+  popMatrix();
+  
+  pushMatrix(); //Luigui
+  l=5;
+  translate(165,-10);
+     fill(0);
+  stroke(0);
+  rect(x+l*7,y,l*4,l);
+  rect(x+l*5,y+l,l*2,l);
+  rect(x+l*11,y+l,l*2,l);
+  rect(x+l*4,y+l*2,l,l);
+  rect(x+l*13,y+l*2,l,l);
+  rect(x+l*3,y+l*3,l,l);
+  rect(x+l*14,y+l*3,l,l);
+  rect(x+l*2,y+l*4,l,l*4);
+  rect(x+l*15,y+l*4,l,l*4);
+  rect(x+l*3,y+l*7,l,l*5);
+  rect(x+l*14,y+l*7,l,l*5);
+  rect(x+l,y+l*8,l,l*2);
+  rect(x+l*16,y+l*8,l,l*2);
+  rect(x+l*2,y+l*10,l,l);
+  rect(x+l*15,y+l*10,l,l);
+  rect(x+l*4,y+l*12,l,l);
+  rect(x+l*13,y+l*12,l,l);
+  rect(x+l*5,y+l*13,l,l);
+  rect(x+l*12,y+l*13,l,l);
+  rect(x+l*6,y+l*14,l*6,l);
+  rect(x+l*6,y+l*4,l*6,l);
+  rect(x+l*5,y+l*5,l*8,l);
+  rect(x+l*4,y+l*6,l*10,l);
+  rect(x+l*7,y+l*8,l,l*2);
+  rect(x+l*10,y+l*8,l,l*2);
+  rect(x+l*6,y+l*11,l,l);
+  rect(x+l*11,y+l*11,l,l);
+  rect(x+l*7,y+l*12,l*4,l);
+  
+  fill(255);
+  stroke(0);
+  rect(x+l*7,y+l*3,l*4,l);
+  rect(x+l*8,y+l*2,l*2,l);
+  rect(x+l*6,y+l*7,l,l*3);
+  rect(x+l*7,y+l*7,l,l);
+  rect(x+l*11,y+l*7,l,l*3);
+  rect(x+l*10,y+l*7,l,l);
+  
+  fill(87,166,57);
+  stroke(87,166,57);
+  rect(x+l*7,y+l,l*4,l);
+  rect(x+l*5,y+l*2,l*3,l);
+  rect(x+l*10,y+l*2,l*3,l);
+  rect(x+l*4,y+l*3,l*3,l);
+  rect(x+l*11,y+l*3,l*3,l);
+  rect(x+l*3,y+l*4,l*3,l);
+  rect(x+l*12,y+l*4,l*3,l);
+  rect(x+l*3,y+l*5,l*2,l);
+  rect(x+l*13,y+l*5,l*2,l);
+  rect(x+l*3,y+l*6,l,l);
+  rect(x+l*14,y+l*6,l,l);
+  
+  fill(255,204,153);
+  stroke(255,204,153);
+  rect(x+l*4,y+l*7,l*2,l);
+  rect(x+l*12,y+l*7,l*2,l);
+  rect(x+l*8,y+l*7,l*2,l);
+  rect(x+l*4,y+l*8,l*2,l*3);
+  rect(x+l*12,y+l*8,l*2,l*3);
+  rect(x+l*8,y+l*8,l*2,l*4);
+  rect(x+l*6,y+l*10,l*6,l);
+  rect(x+l*7,y+l*11,l*4,l);
+  rect(x+l*4,y+l*11,l*2,l);
+  rect(x+l*12,y+l*11,l*2,l);
+  rect(x+l*5,y+l*12,l*2,l);
+  rect(x+l*11,y+l*12,l*2,l);
+  rect(x+l*6,y+l*13,l*6,l);
+  rect(x+l*2,y+l*8,l,l*2);
+  rect(x+l*15,y+l*8,l,l*2);
+  popMatrix();
+  
+  pushMatrix(); // Darth Vader
+  //float l;
+  l= 3.5;
+  translate(330,-13);
+  fill(0);
+stroke(0);
+rect(x+l*10,y,l*2,l);
+rect(x+l*13,y,l,l);
+rect(x+l*15,y,l*2,l);
+rect(x+l*8,y+l,l*4,l);
+rect(x+l*13,y+l,l,l);
+rect(x+l*15,y+l,l*4,l);
+rect(x+l*6,y+l*2,l*6,l);
+rect(x+l*13,y+l*2,l,l);
+rect(x+l*15,y+l*2,l*6,l);
+rect(x+l*6,y+l*3,l*6,l);
+rect(x+l*13,y+l*3,l,l);
+rect(x+l*15,y+l*3,l*6,l);
+rect(x+l*5,y+l*4,l*7,l);
+rect(x+l*13,y+l*4,l,l);
+rect(x+l*15,y+l*4,l*7,l);
+rect(x+l*5,y+l*5,l*7,l);
+rect(x+l*13,y+l*5,l,l);
+rect(x+l*15,y+l*5,l*7,l);
+rect(x+l*5,y+l*6,l*7,l);
+rect(x+l*13,y+l*6,l,l);
+rect(x+l*15,y+l*6,l*7,l);
+rect(x+l*4,y+l*7,l*8,l);
+rect(x+l*13,y+l*7,l,l);
+rect(x+l*15,y+l*7,l*8,l);
+rect(x+l*4,y+l*8,l*4,l);
+rect(x+l*13,y+l*8,l,l);
+rect(x+l*19,y+l*8,l*4,l);
+rect(x+l*4,y+l*9,l*3,l);
+rect(x+l*8,y+l*9,l*4,l);
+rect(x+l*13,y+l*9,l,l);
+rect(x+l*15,y+l*9,l*4,l);
+rect(x+l*20,y+l*9,l*3,l);
+rect(x+l*3,y+l*10,l*3,l);
+rect(x+l*8,y+l*10,l*5,l);
+rect(x+l*14,y+l*10,l*5,l);
+rect(x+l*21,y+l*10,l*3,l);
+rect(x+l*7,y+l*10,l*2,l);
+rect(x+l*14,y+l*10,l*6,l);
+rect(x+l*21,y+l*10,l*2,l);
+rect(x+l*7,y+l*11,l*7,l);
+rect(x+l*14,y+l*11,l*6,l);
+rect(x+l*21,y+l*11,l*3,l);
+rect(x+l*3,y+l*11,l*3,l);
+rect(x+l*3,y+l*12,l*2,l);
+rect(x+l*7,y+l*12,l*5,l);
+rect(x+l*13,y+l*12,l,l);
+rect(x+l*15,y+l*12,l*5,l);
+rect(x+l*22,y+l*12,l*2,l);
+rect(x+l*2,y+l*13,l*3,l);
+rect(x+l*6,y+l*13,l,l);
+rect(x+l*12,y+l*13,l*3,l);
+rect(x+l*22,y+l*13,l*3,l);
+rect(x+l*20,y+l*13,l,l);
+rect(x+l*2,y+l*14,l*2,l);
+rect(x+l*5,y+l*14,l*8,l);
+rect(x+l*14,y+l*14,l*8,l);
+rect(x+l*23,y+l*14,l*2,l);
+rect(x+l*2,y+l*15,l*2,l);
+rect(x+l*5,y+l*15,l*5,l);
+rect(x+l*11,y+l*15,l*5,l);
+rect(x+l*17,y+l*15,l*5,l);
+rect(x+l*23,y+l*15,l*2,l);
+rect(x+l*2,y+l*16,l,l);
+rect(x+l*4,y+l*16,l,l);
+rect(x+l*6,y+l*16,l*3,l);
+rect(x+l*10,y+l*16,l*2,l);
+rect(x+l*13,y+l*16,l,l);
+rect(x+l*15,y+l*16,l*2,l);
+rect(x+l*18,y+l*16,l*3,l);
+rect(x+l*22,y+l*16,l,l);
+rect(x+l*24,y+l*16,l,l);
+rect(x+l,y+l*17,l*2,l);
+rect(x+l*4,y+l*17,l*2,l);
+rect(x+l*7,y+l*17,l,l);
+
+rect(x+l*9,y+l*17,l*3,l);
+rect(x+l*13,y+l*17,l,l);
+rect(x+l*15,y+l*17,l*3,l);
+rect(x+l*19,y+l*17,l,l);
+rect(x+l*21,y+l*17,l*2,l);
+rect(x+l*24,y+l*17,l*2,l);
+rect(x+l,y+l*18,l,l);
+rect(x+l*4,y+l*18,l*3,l);
+rect(x+l*8,y+l*18,l*2,l);
+rect(x+l*11,y+l*18,l,l);
+rect(x+l*13,y+l*18,l,l);
+rect(x+l*15,y+l*18,l,l);
+rect(x+l*17,y+l*18,l*2,l);
+rect(x+l*20,y+l*18,l*3,l);
+rect(x+l*25,y+l*18,l,l);
+rect(x+l,y+l*19,l,l);
+rect(x+l*4,y+l*19,l*4,l);
+rect(x+l*9,y+l*19,l,l);
+rect(x+l*11,y+l*19,l,l);
+rect(x+l*13,y+l*19,l,l);
+rect(x+l*15,y+l*19,l,l);
+rect(x+l*17,y+l*19,l,l);
+rect(x+l*19,y+l*19,l*4,l);
+rect(x+l*25,y+l*19,l,l);
+rect(x,y+l*20,l,l);
+rect(x+l*3,y+l*20,l*4,l);
+rect(x+l*8,y+l*20,l,l);
+rect(x+l*11,y+l*20,l,l);
+rect(x+l*13,y+l*20,l,l);
+rect(x+l*15,y+l*20,l,l);
+rect(x+l*18,y+l*20,l,l);
+rect(x+l*20,y+l*20,l*4,l);
+rect(x+l*26,y+l*20,l,l);
+rect(x,y+l*21,l,l);
+rect(x+l*3,y+l*21,l*7,l);
+rect(x+l*17,y+l*21,l*7,l);
+rect(x+l*26,y+l*21,l,l);
+rect(x+l*9,y+l*22,l*9,l);
+
+fill(190,190,190);
+stroke(190,190,190);
+rect(x+l*12,y,l,l);
+rect(x+l*14,y,l,l);
+rect(x+l*12,y+l,l,l);
+rect(x+l*14,y+l,l,l);
+rect(x+l*12,y+l*2,l,l);
+rect(x+l*14,y+l*2,l,l);
+rect(x+l*12,y+l*3,l,l);
+rect(x+l*14,y+l*3,l,l);
+rect(x+l*12,y+l*4,l,l);
+rect(x+l*14,y+l*4,l,l);
+rect(x+l*12,y+l*5,l,l);
+rect(x+l*14,y+l*5,l,l);
+rect(x+l*12,y+l*6,l,l);
+rect(x+l*14,y+l*6,l,l);
+rect(x+l*12,y+l*7,l,l);
+rect(x+l*14,y+l*7,l,l);
+rect(x+l*8,y+l*8,l*5,l);
+rect(x+l*14,y+l*8,l*5,l);
+rect(x+l*7,y+l*9,l,l);
+rect(x+l*19,y+l*9,l,l);
+rect(x+l*6,y+l*10,l,l);
+rect(x+l*20,y+l*10,l,l);
+rect(x+l*6,y+l*11,l,l);
+rect(x+l*20,y+l*11,l,l);
+rect(x+l*5,y+l*12,l*2,l);
+rect(x+l*20,y+l*12,l*2,l);
+rect(x+l*5,y+l*13,l,l);
+rect(x+l*21,y+l*13,l,l);
+rect(x+l*7,y+l*13,l*5,l);
+rect(x+l*15,y+l*13,l*5,l);
+rect(x+l*12,y+l*9,l,l);
+rect(x+l*14,y+l*9,l,l);
+rect(x+l*13,y+l*10,l,l);
+rect(x+l*12,y+l*12,l,l);
+rect(x+l*14,y+l*12,l,l);
+rect(x+l*4,y+l*14,l,l*2);
+rect(x+l*22,y+l*14,l,l*2);
+rect(x+l*3,y+l*15,l,l*5);
+rect(x+l*23,y+l*15,l,l*5);
+rect(x+l*2,y+l*17,l,l*5);
+rect(x+l*24,y+l*17,l,l*5);
+rect(x+l,y+l*20,l,l*2);
+rect(x+l*25,y+l*20,l,l*2);
+rect(x+l*10,y+l*21,l*7,l);
+rect(x+l*12,y+l*16,l,l*5);
+rect(x+l*14,y+l*16,l,l*5);
+rect(x+l*10,y+l*18,l,l*3);
+rect(x+l*16,y+l*18,l,l*3);
+rect(x+l*5,y+l*16,l,l);
+rect(x+l*6,y+l*17,l,l);
+rect(x+l*9,y+l*16,l,l);
+rect(x+l*8,y+l*17,l,l);
+rect(x+l*21,y+l*16,l,l);
+rect(x+l*20,y+l*17,l,l);
+rect(x+l*17,y+l*16,l,l);
+rect(x+l*18,y+l*17,l,l);
+rect(x+l*10,y+l*15,l,l);
+rect(x+l*16,y+l*15,l,l);
+rect(x+l*7,y+l*18,l,l);
+rect(x+l*19,y+l*18,l,l);
+rect(x+l*8,y+l*19,l,l);
+rect(x+l*18,y+l*19,l,l);
+rect(x+l*9,y+l*20,l,l);
+rect(x+l*17,y+l*20,l,l);
+popMatrix();
+
+pushMatrix(); //Mickye
+translate(90,145);
+l = 5;
+fill(0);
+  stroke(0);
+rect(x+l,y,l*3,l);
+rect(x+l*10,y,l*3,l);
+rect(x,y+l,l*5,l);
+rect(x+l*9,y+l,l*5,l);
+rect(x,y+l*2,l*5,l);
+rect(x+l*9,y+l*2,l*5,l);
+rect(x,y+l*3,l*14,l);
+rect(x+l,y+l*4,l*12,l);
+rect(x+l,y+l*5,l*12,l);
+rect(x+l*2,y+l*6,l*10,l);
+rect(x+l,y+l*7,l*12,l);
+
+fill(255,0,0);
+stroke(255,0,0);
+rect(x+l,y+l*8,l*12,l);
+rect(x+l,y+l*9,l*12,l);
+rect(x+l,y+l*10,l*3,l);
+rect(x+l*6,y+l*10,l*2,l);
+rect(x+l*10,y+l*10,l*3,l);
+rect(x+l*2,y+l*11,l*2,l);
+rect(x+l*6,y+l*11,l*2,l);
+rect(x+l*10,y+l*11,l*2,l);
+rect(x+l*3,y+l*12,l,l);
+rect(x+l*6,y+l*12,l*2,l);
+rect(x+l*10,y+l*12,l,l);
+rect(x+l*4,y+l*13,l*6,l);
+
+fill(255,255,0);
+stroke(255,255,0);
+rect(x+l*4,y+l*10,l*2,l);
+rect(x+l*8,y+l*10,l*2,l);
+rect(x+l*4,y+l*11,l*2,l);
+rect(x+l*8,y+l*11,l*2,l);
+rect(x+l*4,y+l*12,l*2,l);
+rect(x+l*8,y+l*12,l*2,l);
+popMatrix();
+
+pushMatrix(); // Minie
+l=4;
+translate(270,145);
+fill(0);
+stroke(0);
+rect(x+l*2,y,l*4,l);
+rect(x+l*15,y,l*4,l);
+rect(x+l,y+l,l*6,l);
+rect(x+l*14,y+l,l*6,l);
+rect(x,y+l*2,l*8,l);
+rect(x+l*13,y+l*2,l*8,l);
+rect(x,y+l*3,l*8,l);
+rect(x+l*13,y+l*3,l*8,l);
+rect(x,y+l*4,l*8,l);
+rect(x+l*13,y+l*4,l*8,l);
+rect(x,y+l*5,l*8,l);
+rect(x+l*10,y+l*5,l,l);
+rect(x+l*13,y+l*5,l*8,l);
+rect(x+l,y+l*6,l*7,l);
+rect(x+l*9,y+l*6,l*3,l);
+rect(x+l*13,y+l*6,l*7,l);
+rect(x+l*2,y+l*7,l*17,l);
+rect(x+l*4,y+l*8,l*13,l);
+rect(x+l*3,y+l*9,l*15,l);
+rect(x+l*3,y+l*10,l*15,l);
+
+fill(255,0,0);
+stroke(255,0,0);
+rect(x+l*3,y+l*11,l*15,l);
+rect(x+l*4,y+l*13,l*13,l);
+rect(x+l*3,y+l*12,l,l);
+rect(x+l*5,y+l*12,l*2,l);
+rect(x+l*8,y+l*12,l*2,l);
+rect(x+l*11,y+l*12,l*2,l);
+rect(x+l*14,y+l*12,l*2,l);
+rect(x+l*17,y+l*12,l,l);
+rect(x+l*4,y+l*14,l*2,l);
+rect(x+l*7,y+l*14,l*2,l);
+rect(x+l*10,y+l*14,l*2,l);
+rect(x+l*13,y+l*14,l*2,l);
+rect(x+l*16,y+l*14,l,l);
+rect(x+l*5,y+l*15,l*11,l);
+rect(x+l*6,y+l*16,l*2,l);
+rect(x+l*9,y+l*16,l*2,l);
+rect(x+l*12,y+l*16,l*2,l);
+rect(x+l*15,y+l*16,l,l);
+rect(x+l*7,y+l*17,l*8,l);
+rect(x+l*8,y+l*3,l,l);
+rect(x+l*12,y+l*3,l,l);
+rect(x+l*8,y+l*4,l*2,l);
+rect(x+l*11,y+l*4,l*2,l);
+rect(x+l*8,y+l*5,l*2,l);
+rect(x+l*11,y+l*5,l*2,l);
+rect(x+l*8,y+l*6,l,l);
+rect(x+l*12,y+l*6,l,l);
+popMatrix();
+  
+  fill(255);
+  text("Seleciona Jugador 2", 250,40);
+  text("Ataca con la tecla  j",250,60);
+  text("Mario Bros", 100,180);
+  text("Toca q", 110,195);
+  text("Luigui Bros", 280,180);
+  text("Toca w", 290,195);
+  text("Darth Vader", 450,180);
+  text("Toca e", 460,195);
+  text("Mickey Mouse", 190,330);
+  text("Toca r", 210,350);
+  text("Minie Mouse", 380,330);
+  text("Toca t", 400,350);
+  
+  if(keyPressed){
+  if(key == 'q'){
+ pelea2 = mario;
+ jugador2 = 0;
+  titulo=3;  
+  }
+  else if(key == 'w'){
+  pelea2 = luigui;
+  jugador2 = 0;
+  titulo=3;  
+  }
+  else if(key == 'e'){
+ pelea2 = darth;
+ jugador2 = 0;
+  titulo=3;  
+  }
+  else if(key == 'r'){
+ pelea2 = mickye;
+ jugador2 = 0;
+  titulo=3;  
+  }
+  else if(key == 't'){
+ pelea2 = minie;
+ jugador2 = 0;
+  titulo=3;  
+  }
+  }
+}
+
+void batalla(){
+  background(194,242,230);
+  fill(106,217,102);
+  stroke(106,217,102);
+rect(0,300,600,100);
+fill(255);
+stroke(255);
+ellipse(180,60,80,25);
+fill(255);
+stroke(255);
+ellipse(50,160,80,25);
+fill(255);
+stroke(255);
+ellipse(550,60,80,25);
+fill(255);
+stroke(255);
+ellipse(400,160,80,25);
+//  background(0,255,0);
+  fill(0);
+  text("BATALLA",280,40);
+  text("JUGADOR 1",100,70);
+  text("JUGADOR 2",450,70);
+  fill(255,255,0);
+  rect(90,40,i,15);
+  rect(440,40,m,15);
+  
+  //if(jugador1 == 0){
+  pushMatrix();
+  translate(-15,70);
+ // scale(6);
+   pelea1.crear();
+   popMatrix();
+  
+ // }
+  pushMatrix();
+  translate(300,70);
+   // scale(6);
+   pelea2.crear();
+   popMatrix();
+ 
+
+// pelea2.crear();
+ switch(turno){
+   case 0:
+ keyPressed();
+   if(key =='s'){
+     pelea1.salud -= pelea2.golpe;
+     vida1 = pelea1.salud;
+     m = pelea1.salud;
+     turno = 1;
+   
+   }
+   break;
+   case 1:
+    keyPressed();
+   if(key =='j'){
+      pelea2.salud -= pelea1.golpe;
+     vida2 = pelea2.salud;
+     i = pelea2.salud;
+     turno = 0;
+   
+   }
+   break;
+ 
+ }
+   if(vida1 <= 0 ){
+    
+     titulo = 4;
+   }
+   
+    if( vida2 <= 0){
+   
+     titulo = 5;
+   }
+   
+ }
+ 
+
+
+
+
+void  ganador1(){
+background(0,0,255);
+textFont(BitterBold);
+textSize(60);
+text("FIN DEL JUEGO",75,180);
+textSize(30);
+text("GANA Jugador 1",170,250);
+textSize(20);
+text("Presiona ENTER para reiniciar", 140,300);
+keyPressed();
+
+if (key == ENTER){
+  
+  titulo = 1;
+
+}
+ pelea1.salud = 100;
+ pelea2.salud = 100;
+ vida1 = 100;
+  m = pelea1.salud;
+  i = pelea2.salud;
+ turno= 0;
+}
+
+void  ganador2(){
+background(0,0,255);
+textFont(BitterBold);
+textSize(60);
+text("FIN DEL JUEGO",75,180);
+textSize(30);
+text("GANA Jugador 2",170,250);
+textSize(20);
+text("Presiona ENTER para reiniciar", 140,300);
+keyPressed();
+
+if (key == ENTER){
+  
+  titulo = 1;
+
+}
+ pelea1.salud = 100;
+ pelea2.salud = 100;
+ i = pelea2.salud;
+  m = pelea1.salud;
+ vida2 = 100;
+
+}
